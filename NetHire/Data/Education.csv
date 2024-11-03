@@ -1,0 +1,6 @@
+EducationId,UserId,InstituteName,CourseName,StartYear,EndYear,Grade,Location
+8f7d9a62-4b3a-4c1e-9b5f-8e6d32a41e2c,2a5b8c3d-1e4f-4a7b-9c8d-5e6f3a2b1c4d,Harvard University,Computer Science,2018,2022,3.8,Cambridge MA
+9e8d7c6b-5a4b-3c2d-1e0f-9a8b7c6d5e4f,3b6c9d8e-2f5g-6h7i-8j9k-1l2m3n4o5p6q,Stanford University,Data Science,2019,2023,3.9,Stanford CA
+7b6a5c4d-3e2f-1g0h-9i8j-7k6l5m4n3o2p,4c7d8e9f-5g6h-7i8j-9k0l-1m2n3o4p5q6r,MIT,Software Engineering,2017,2021,3.7,Cambridge MA
+6c5b4a3d-2e1f-0g9h-8i7j-6k5l4m3n2o1p,5d8e9f0g-6h7i-8j9k-0l1m-2n3o4p5q6r7s,UC Berkeley,Artificial Intelligence,2020,2024,3.6,Berkeley CA
+5d4c3b2a-1e0f-9g8h-7i6j-5k4l3m2n1o0p,6e9f0g1h-7i8j-9k0l-1m2n-3o4p5q6r7s8t,Georgia Tech,Robotics Engineering,2016,2020,3.5,Atlanta GA

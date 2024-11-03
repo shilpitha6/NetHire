@@ -1,0 +1,8 @@
+UserId,Email,Password,FirstName,LastName,Role
+8f7d9e6c-5b4a-4321-9876-123456789abc,john.doe@email.com,hashedPass123,John,Doe,Applicant
+7e6d5c4b-3a2b-4321-9876-987654321def,sarah.smith@techcorp.com,hashedPass456,Sarah,Smith,Company
+9a8b7c6d-5e4f-4321-9876-456789123ghi,admin@nethire.com,hashedPass789,Admin,User,Admin
+2c3d4e5f-6g7h-4321-9876-741852963jkl,mike.wilson@email.com,hashedPassABC,Mike,Wilson,Applicant
+3b4c5d6e-7f8g-4321-9876-369258147mno,jane.brown@startup.com,hashedPassDEF,Jane,Brown,Company
+4d5e6f7g-8h9i-4321-9876-159357246pqr,robert.jones@email.com,hashedPassGHI,Robert,Jones,Applicant
+5e6f7g8h-9i0j-4321-9876-753951824stu,emma.davis@bigcorp.com,hashedPassJKL,Emma,Davis,Company

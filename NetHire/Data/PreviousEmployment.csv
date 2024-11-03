@@ -1,0 +1,6 @@
+PreviousEmploymentId,UserId,EmployerName,Location,JobTitle,JobDescription,Pay,ReasonForLeaving
+a1b2c3d4-e5f6-4321-8765-1a2b3c4d5e6f,f9e8d7c6-b5a4-4321-9876-5f4e3d2c1b0a,Microsoft,Seattle WA,Software Engineer,"Developed enterprise applications using .NET Core, led team of 5 developers",125000.00,Career Growth
+b2c3d4e5-f6a7-5432-8765-2b3c4d5e6f7g,f9e8d7c6-b5a4-4321-9876-5f4e3d2c1b0a,Amazon,Bellevue WA,Senior Developer,"Full-stack development, AWS cloud architecture",145000.00,Relocation
+c3d4e5f6-a7b8-6543-8765-3c4d5e6f7g8h,a1b2c3d4-e5f6-7890-1234-9a8b7c6d5e4f,Google,Mountain View CA,Product Manager,"Led product strategy for Gmail features",160000.00,Company Restructuring
+d4e5f6a7-b8c9-7654-8765-4d5e6f7g8h9i,b2c3d4e5-f6a7-8901-2345-8b9c0d1e2f3g,Meta,San Francisco CA,UX Designer,"Designed mobile app interfaces, conducted user research",110000.00,Better Opportunity
+e5f6a7b8-c9d0-8765-8765-5e6f7g8h9i0j,c3d4e5f6-a7b8-9012-3456-7c8d9e0f1g2h,Apple,Cupertino CA,iOS Developer,"Built and maintained iOS applications",135000.00,Contract Ended

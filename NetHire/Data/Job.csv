@@ -1,0 +1,6 @@
+JobId,CompanyId,Title,Location,Salary,Description,JobType,WorkSettings,TravelRequirement,ApplyType
+8f7d9e6b-8f3a-4c1e-9f5d-1a2b3c4d5e6f,7a1b2c3d-4e5f-6g7h-8i9j-0k1l2m3n4o5p,Senior Software Engineer,Seattle WA,150000.00,"Full-stack development using .NET Core and React. 5+ years experience required.",FullTime,Hybrid,Occasional,Internal
+9e8d7c6b-5a4b-3c2d-1e0f-9a8b7c6d5e4f,2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q,Product Manager,San Francisco CA,135000.00,"Lead product strategy and development for our flagship product.",FullTime,OnSite,None,External
+1a2b3c4d-5e6f-7g8h-9i0j-1k2l3m4n5o6p,3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r,UX Designer,Remote,95000.00,"Create user-centered designs for web and mobile applications.",Contract,Remote,None,External
+2b3c4d5e-6f7g-8h9i-0j1k-2l3m4n5o6p7q,4d5e6f7g-8h9i-0j1k-2l3m-4n5o6p7q8r9s,Marketing Intern,New York NY,45000.00,"Support marketing team with social media and content creation.",Internship,Hybrid,None,Internal
+3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r,5e6f7g8h-9i0j-1k2l-3m4n-5o6p7q8r9s0t,Sales Representative,Chicago IL,80000.00,"B2B sales role with established client base.",FullTime,OnSite,Frequent,External

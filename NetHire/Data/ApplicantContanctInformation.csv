@@ -1,0 +1,5 @@
+ContactInfoId,UserId,Phone,AltPhone,Email,AltEmail,StreetAddress,Address2,City,State,ZipCode
+8f7d9e6a-5b4c-4231-8d3f-1234567890ab,7c6b5a4d-3e2f-1a9b-8c7d-0987654321fe,555-123-4567,555-987-6543,john.doe@email.com,jdoe.work@email.com,123 Main Street,Apt 4B,Seattle,Washington,98101
+2e1d8c7b-9a4f-3b2e-1c9d-abcdef123456,1a2b3c4d-5e6f-7890-abcd-ef1234567890,206-555-1212,,sarah.smith@email.com,,456 Pine Avenue,,Portland,Oregon,97201
+3c4d5e6f-7a8b-9c0d-1e2f-456789abcdef,9d8c7b6a-5f4e-3d2c-1b0a-9876543210fe,425-555-9999,425-555-8888,mike.jones@email.com,mjones.personal@email.com,789 Oak Drive,Suite 100,Bellevue,Washington,98004
+4d5e6f7g-8h9i-0j1k-2l3m-567890abcdef,5f4e3d2c-1b0a-9876-5432-10fedcba9876,503-555-7777,,emma.wilson@email.com,,321 Elm Street,Unit 5,Vancouver,Washington,98660
