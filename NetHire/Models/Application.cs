@@ -33,8 +33,8 @@ namespace NetHire.Models
         public string? Status { get; set; }
 
         // Navigation properties
-        [ForeignKey("UserId")]
-        public virtual User? User { get; set; }
+        // [ForeignKey("UserId")]
+        // public virtual User? User { get; set; }
 
         [ForeignKey("JobId")]
         public virtual Job? Job { get; set; }

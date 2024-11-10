@@ -28,8 +28,8 @@ namespace NetHire.Models
         public string? Address { get; set; }
 
         // Navigation properties
-        [ForeignKey("UserId")]
-        public virtual User? User { get; set; }
+        // [ForeignKey("UserId")]
+        // public virtual User? User { get; set; }
 
         public virtual ICollection<Application>? Applications { get; set; }
 

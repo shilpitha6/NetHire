@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "bRdOJJDXMCjYeOFGIPxvxq2+yaADI4/IrKkFEpUMBXM=",
+  "Source": "NetHireBackend",
+  "BasePath": "_content/NetHireBackend",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}

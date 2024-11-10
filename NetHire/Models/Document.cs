@@ -16,7 +16,7 @@ namespace NetHire.Models
         public string FilePath { get; set; } = null!;
 
         // Navigation property
-        [ForeignKey("UserId")]
-        public virtual User? User { get; set; }
+        // [ForeignKey("UserId")]
+        // public virtual User? User { get; set; }
     }
 }

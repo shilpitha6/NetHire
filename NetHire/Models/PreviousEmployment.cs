@@ -29,8 +29,7 @@ namespace NetHire.Models
         public string? ReasonForLeaving { get; set; }
 
         // Navigation properties
-        [ForeignKey("UserId")]
-        public virtual User? User { get; set; }
+       
 
         public virtual ICollection<Application>? Applications { get; set; }
     }
