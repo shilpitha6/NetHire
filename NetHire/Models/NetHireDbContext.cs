@@ -24,6 +24,7 @@ namespace NetHire.Models
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<ProfessionalReference> ProfessionalReferences { get; set; }
         public DbSet<Document> Documents { get; set; }
+        public DbSet<ApplicantContactInformation> ApplicantContactInformation { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

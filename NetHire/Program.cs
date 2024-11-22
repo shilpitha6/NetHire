@@ -21,6 +21,7 @@ builder.Services.AddAuthentication(options =>
 {
     options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
     options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultScheme = JwtBearerDefaults.AuthenticationScheme;  // Add this line
 })
 .AddJwtBearer(options => {
     options.TokenValidationParameters = new TokenValidationParameters
@@ -31,6 +32,20 @@ builder.Services.AddAuthentication(options =>
         ValidateAudience = false,
         ValidateLifetime = true,
         ClockSkew = TimeSpan.Zero
+    };
+    // Add these event handlers for debugging
+    options.Events = new JwtBearerEvents
+    {
+        OnAuthenticationFailed = context =>
+        {
+            Console.WriteLine("Authentication failed: " + context.Exception.Message);
+            return Task.CompletedTask;
+        },
+        OnChallenge = context =>
+        {
+            Console.WriteLine("Challenge requested");
+            return Task.CompletedTask;
+        }
     };
 });
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => {
