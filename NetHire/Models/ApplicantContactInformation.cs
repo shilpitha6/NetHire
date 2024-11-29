@@ -9,7 +9,7 @@ namespace NetHire.Models
         public Guid ContactInfoId { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; } = null!;
 
         [StringLength(15)]
         public string? Phone { get; set; }

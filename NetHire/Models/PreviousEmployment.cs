@@ -9,7 +9,7 @@ namespace NetHire.Models
         public Guid PreviousEmploymentId { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [StringLength(255)]
         public string? EmployerName { get; set; }

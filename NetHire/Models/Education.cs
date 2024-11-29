@@ -9,7 +9,7 @@ namespace NetHire.Models
         public Guid EducationId { get; set; }
 
         [Required]
-        public Guid UserId { get; set; }
+        public string UserId { get; set; }
 
         [StringLength(255)]
         public string? InstituteName { get; set; }

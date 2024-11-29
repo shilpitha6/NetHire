@@ -8,7 +8,7 @@ using NetHire.Services;
 
 namespace NetHire.Controllers
 {
-    [Authorize]
+    [Authorize(AuthenticationSchemes = "Bearer", Roles = "Applicant")]
     [Route("api/[controller]")]
     [ApiController]
     public class ContactInfoController : ControllerBase
@@ -36,7 +36,7 @@ namespace NetHire.Controllers
             }
 
             var contactInfo = await _context.ApplicantContactInformation
-                .FirstOrDefaultAsync(c => c.UserId == Guid.Parse(userId));
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
             if (contactInfo == null)
             {
@@ -69,7 +69,7 @@ namespace NetHire.Controllers
 
             // Check if contact info already exists for this user
             var existingContactInfo = await _context.ApplicantContactInformation
-                .FirstOrDefaultAsync(c => c.UserId == Guid.Parse(userId));
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
             if (existingContactInfo != null)
             {
@@ -81,7 +81,7 @@ namespace NetHire.Controllers
                 });
             }
 
-            contactInfo.UserId = Guid.Parse(userId);
+            contactInfo.UserId = userId;
             contactInfo.ContactInfoId = Guid.NewGuid();
 
             _context.ApplicantContactInformation.Add(contactInfo);
@@ -109,7 +109,7 @@ namespace NetHire.Controllers
             }
 
             var existingContactInfo = await _context.ApplicantContactInformation
-                .FirstOrDefaultAsync(c => c.UserId == Guid.Parse(userId));
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
             if (existingContactInfo == null)
             {
@@ -154,7 +154,7 @@ namespace NetHire.Controllers
             }
 
             var contactInfo = await _context.ApplicantContactInformation
-                .FirstOrDefaultAsync(c => c.UserId == Guid.Parse(userId));
+                .FirstOrDefaultAsync(c => c.UserId == userId);
 
             if (contactInfo == null)
             {
