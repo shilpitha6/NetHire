@@ -31,6 +31,12 @@ namespace NetHire.Models
         External
     }
 
+    public enum JobStatus
+    {
+        Active,
+        Inactive
+    }
+
     public class Job
     {
         [Key]
@@ -59,6 +65,9 @@ namespace NetHire.Models
 
         [Required]
         public ApplyType ApplyType { get; set; }
+
+        [Required]
+        public JobStatus Status { get; set; } = JobStatus.Active;
 
         // Navigation property
         [ForeignKey("CompanyId")]

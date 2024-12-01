@@ -8,7 +8,7 @@ using NetHire.Services;
 
 namespace NetHire.Controllers
 {
-    [Authorize(AuthenticationSchemes = "Bearer", Roles = "Applicant")]
+    [Authorize(AuthenticationSchemes = "Bearer", Roles = "User")]
     [Route("api/[controller]")]
     [ApiController]
     public class ContactInfoController : ControllerBase
