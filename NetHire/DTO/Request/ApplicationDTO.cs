@@ -1,15 +1,28 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NetHire.Models
+namespace NetHire.DTO.Request
 {
-    public class ApplicantContactInformation
+    public class ApplicationDTO
     {
-        [Key]
-        public Guid ContactInfoId { get; set; }
+        
+        public string ApplicationId { get; set; }
+
+        
+        public string UserId { get; set; }
+
+        
+        public string JobId { get; set; }
 
         [Required]
-        public string UserId { get; set; } = null!;
+        [StringLength(100)]
+        public string FirstName { get; set; } = null!;
+
+        [StringLength(100)]
+        public string? MiddleName { get; set; }
+
+        [Required] 
+        [StringLength(100)]
+        public string LastName { get; set; } = null!;
 
         [StringLength(15)]
         public string? Phone { get; set; }

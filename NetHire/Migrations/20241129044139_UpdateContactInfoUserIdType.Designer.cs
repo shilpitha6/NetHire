@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetHire.Models;
 
@@ -11,9 +12,11 @@ using NetHire.Models;
 namespace NetHireBackend.Migrations
 {
     [DbContext(typeof(NetHireDbContext))]
-    partial class NetHireDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241129044139_UpdateContactInfoUserIdType")]
+    partial class UpdateContactInfoUserIdType
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -215,21 +218,9 @@ namespace NetHireBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Address2")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("AltEmail")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("AltPhone")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
-
-                    b.Property<string>("City")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
+                    b.Property<DateTime>("ApplicationDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2");
 
                     b.Property<byte[]>("Documents")
                         .HasColumnType("varbinary(max)");
@@ -237,36 +228,14 @@ namespace NetHireBackend.Migrations
                     b.Property<Guid?>("EducationId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Email")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
                     b.Property<Guid?>("EmergencyContactId")
                         .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
 
                     b.Property<Guid>("JobId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
-                    b.Property<string>("MiddleName")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("PersonalDetails")
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar(15)");
 
                     b.Property<Guid?>("PreviousEmploymentId")
                         .HasColumnType("uniqueidentifier");
@@ -274,24 +243,11 @@ namespace NetHireBackend.Migrations
                     b.Property<Guid?>("ProfessionalReferenceId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("State")
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)");
-
                     b.Property<string>("Status")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("StreetAddress")
-                        .HasMaxLength(255)
-                        .HasColumnType("nvarchar(255)");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ZipCode")
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar(20)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ApplicationId");
 
@@ -413,9 +369,8 @@ namespace NetHireBackend.Migrations
                     b.Property<decimal?>("Revenue")
                         .HasColumnType("decimal(15,2)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Website")
                         .HasMaxLength(255)
@@ -437,9 +392,8 @@ namespace NetHireBackend.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("FileId");
 
@@ -474,13 +428,12 @@ namespace NetHireBackend.Migrations
                     b.Property<int?>("StartYear")
                         .HasColumnType("int");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("EducationId");
 
-                    b.ToTable("Educations");
+                    b.ToTable("Education");
                 });
 
             modelBuilder.Entity("NetHire.Models.EmergencyContact", b =>
@@ -509,9 +462,8 @@ namespace NetHireBackend.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("EmergencyContactId");
 
@@ -524,8 +476,8 @@ namespace NetHireBackend.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("ApplyType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ApplyType")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("CompanyId")
                         .HasColumnType("uniqueidentifier");
@@ -533,8 +485,8 @@ namespace NetHireBackend.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("JobType")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("JobType")
+                        .HasColumnType("int");
 
                     b.Property<string>("Location")
                         .HasMaxLength(100)
@@ -543,19 +495,16 @@ namespace NetHireBackend.Migrations
                     b.Property<decimal?>("Salary")
                         .HasColumnType("decimal(15,2)");
 
-                    b.Property<string>("Status")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("TravelRequirement")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("TravelRequirement")
+                        .HasColumnType("int");
 
-                    b.Property<string>("WorkSettings")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("WorkSettings")
+                        .HasColumnType("int");
 
                     b.HasKey("JobId");
 
@@ -592,9 +541,8 @@ namespace NetHireBackend.Migrations
                         .HasMaxLength(255)
                         .HasColumnType("nvarchar(255)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("PreviousEmploymentId");
 
@@ -631,9 +579,8 @@ namespace NetHireBackend.Migrations
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
 
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ReferenceId");
 

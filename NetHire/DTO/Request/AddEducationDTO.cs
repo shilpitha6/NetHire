@@ -1,10 +1,11 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using NetHire.Models;
 
-namespace NetHire.Models
+namespace NetHire.DTO.Request
 {
-    public class Education
-    {
+    public class AddEducationDTO
+    {       
         [Key]
         public Guid EducationId { get; set; }
 
@@ -31,5 +32,7 @@ namespace NetHire.Models
        
 
         public virtual ICollection<Application>? Applications { get; set; }
+        
+
     }
 }

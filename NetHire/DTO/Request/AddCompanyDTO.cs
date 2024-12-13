@@ -1,16 +1,10 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NetHire.Models
+namespace NetHire.DTO.Request
 {
-    public class Company
+    public class AddCompanyDTO
     {
-        [Key]
-        public Guid CompanyId { get; set; }
-
-        [Required]
-        public string UserId { get; set; }
-
         [Required]
         [StringLength(255)]
         public string CompanyName { get; set; } = null!;

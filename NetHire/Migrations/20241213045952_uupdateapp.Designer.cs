@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NetHire.Models;
 
@@ -11,9 +12,11 @@ using NetHire.Models;
 namespace NetHireBackend.Migrations
 {
     [DbContext(typeof(NetHireDbContext))]
-    partial class NetHireDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241213045952_uupdateapp")]
+    partial class uupdateapp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -226,6 +229,10 @@ namespace NetHireBackend.Migrations
                     b.Property<string>("AltPhone")
                         .HasMaxLength(15)
                         .HasColumnType("nvarchar(15)");
+
+                    b.Property<DateTime>("ApplicationDate")
+                        .ValueGeneratedOnAddOrUpdate()
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("City")
                         .HasMaxLength(100)

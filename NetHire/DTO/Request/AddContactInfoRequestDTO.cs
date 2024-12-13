@@ -1,16 +1,9 @@
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
-namespace NetHire.Models
+namespace NetHire.DTO.Request
 {
-    public class ApplicantContactInformation
+    public class AddContactInfoRequestDTO
     {
-        [Key]
-        public Guid ContactInfoId { get; set; }
-
-        [Required]
-        public string UserId { get; set; } = null!;
-
         [StringLength(15)]
         public string? Phone { get; set; }
 
