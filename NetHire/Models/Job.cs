@@ -57,17 +57,15 @@ namespace NetHire.Models
 
         public string? Description { get; set; }
 
-        public JobType? JobType { get; set; }
+        public string? JobType { get; set; }
 
-        public WorkSetting? WorkSettings { get; set; }
+        public string? WorkSettings { get; set; }
 
-        public TravelRequirement? TravelRequirement { get; set; }
+        public string? TravelRequirement { get; set; }
 
-        [Required]
-        public ApplyType ApplyType { get; set; }
+        public string? ApplyType { get; set; }
 
-        [Required]
-        public JobStatus Status { get; set; } = JobStatus.Active;
+        public string? Status { get; set; }
 
         // Navigation property
         [ForeignKey("CompanyId")]

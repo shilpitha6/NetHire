@@ -19,7 +19,7 @@ namespace NetHire.Models
         public DbSet<Company> Companies { get; set; }
         public DbSet<Job> Jobs { get; set; }
         public DbSet<Application> Applications { get; set; }
-        public DbSet<Education> Education { get; set; }
+        public DbSet<Education> Educations { get; set; }
         public DbSet<PreviousEmployment> PreviousEmployments { get; set; }
         public DbSet<EmergencyContact> EmergencyContacts { get; set; }
         public DbSet<ProfessionalReference> ProfessionalReferences { get; set; }

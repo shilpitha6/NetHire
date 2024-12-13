@@ -5,7 +5,7 @@ using NetHire.Models;
 using System.Security.Claims;
 using NetHire.DTO.Response;
 using NetHire.Services;
-
+using NetHire.DTO.Request;
 using NetHire.Models;
 
 namespace NetHire.Controllers
@@ -22,44 +22,128 @@ namespace NetHire.Controllers
             _context = context;
         }
 
-        // GET: api/Company
+        [AllowAnonymous]
         [HttpGet("GetCompanies")]
-        public async Task<ActionResult<IEnumerable<Company>>> GetCompanies()
+        public async Task<ActionResult<ApiResponse>> GetCompanies()
         {
-            return await _context.Companies.ToListAsync();
+            var companies = await _context.Companies.ToListAsync();
+            return Ok(new ApiResponse 
+            { 
+                ResponseSuccess = true,
+                Status = 200,
+                Data = companies,
+                Message = "Companies retrieved successfully"
+            });
         }
 
         // GET: api/Company/{id}
+        [AllowAnonymous]
         [HttpGet("GetCompany/{id}")]
-        public async Task<ActionResult<Company>> GetCompany(Guid id)
+        public async Task<ActionResult<ApiResponse>> GetCompany(Guid id)
         {
             var company = await _context.Companies.FindAsync(id);
 
             if (company == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse 
+                { 
+                    ResponseSuccess = false,
+                    Status = 404,
+                    Message = "Company not found"
+                });
             }
 
-            return company;
+            return Ok(new ApiResponse 
+            { 
+                ResponseSuccess = true,
+                Status = 200,
+                Data = company,
+                Message = "Company retrieved successfully"
+            });
+        }
+
+         [HttpGet("GetCompaniesByUser")]
+        public async Task<ActionResult<ApiResponse>> GetCompaniesByUser()
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized(new ApiResponse
+                {
+                    ResponseSuccess = false,
+                    Status = 401,
+                    Message = "User not authenticated"
+                });
+            }
+
+            var companies = await _context.Companies
+                .Where(c => c.UserId == userId)
+                .ToListAsync();
+
+            return Ok(new ApiResponse 
+            { 
+                ResponseSuccess = true,
+                Status = 200,
+                Data = companies,
+                Message = "Companies retrieved successfully"
+            });
         }
 
         // POST: api/Company
         [HttpPost("CreateCompany")]
-        public async Task<ActionResult<Company>> CreateCompany(Company company)
+        public async Task<ActionResult<ApiResponse>> CreateCompany(AddCompanyDTO company)
         {
-            _context.Companies.Add(company);
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (userId == null)
+            {
+                return Unauthorized(new ApiResponse 
+                { 
+                    ResponseSuccess = false,
+                    Status = 401,
+                    Message = "User not authenticated"
+                });
+            }
+
+            var newCompany = new Company
+            {
+                CompanyId = Guid.NewGuid(),
+                UserId = userId,
+                CompanyName = company.CompanyName,
+                CEO = company.CEO,
+                FoundedYear = company.FoundedYear,
+                Website = company.Website,
+                Headquarters = company.Headquarters,
+                Revenue = company.Revenue,
+                CompanySize = company.CompanySize,
+                Industry = company.Industry
+            };
+
+            _context.Companies.Add(newCompany);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetCompany), new { id = company.CompanyId }, company);
+            return CreatedAtAction(nameof(GetCompany), 
+                new { id = newCompany.CompanyId }, 
+                new ApiResponse 
+                { 
+                    ResponseSuccess = true,
+                    Status = 201,
+                    Data = newCompany,
+                    Message = "Company created successfully"
+                });
         }
 
         // PUT: api/Company/{id}
         [HttpPut("UpdateCompany/{id}")]
-        public async Task<IActionResult> UpdateCompany(Guid id, Company company)
+        public async Task<ActionResult<ApiResponse>> UpdateCompany(Guid id, Company company)
         {
             if (id != company.CompanyId)
             {
-                return BadRequest();
+                return BadRequest(new ApiResponse 
+                { 
+                    ResponseSuccess = false,
+                    Status = 400,
+                    Message = "Invalid company ID"
+                });
             }
 
             _context.Entry(company).State = EntityState.Modified;
@@ -67,33 +151,52 @@ namespace NetHire.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+                return Ok(new ApiResponse 
+                { 
+                    ResponseSuccess = true,
+                    Status = 200,
+                    Message = "Company updated successfully"
+                });
             }
             catch (DbUpdateConcurrencyException)
             {
                 if (!CompanyExists(id))
                 {
-                    return NotFound();
+                    return NotFound(new ApiResponse 
+                    { 
+                        ResponseSuccess = false,
+                        Status = 404,
+                        Message = "Company not found"
+                    });
                 }
                 throw;
             }
-
-            return NoContent();
         }
 
         // DELETE: api/Company/{id}
         [HttpDelete("DeleteCompany/{id}")]
-        public async Task<IActionResult> DeleteCompany(Guid id)
+        public async Task<ActionResult<ApiResponse>> DeleteCompany(Guid id)
         {
             var company = await _context.Companies.FindAsync(id);
             if (company == null)
             {
-                return NotFound();
+                return NotFound(new ApiResponse 
+                { 
+                    ResponseSuccess = false,
+                    Status = 404,
+                    Message = "Company not found"
+                });
             }
 
             _context.Companies.Remove(company);
             await _context.SaveChangesAsync();
 
-            return NoContent();
+            return Ok(new ApiResponse 
+            { 
+                ResponseSuccess = true,
+                Status = 200,
+                Message = "Company deleted successfully"
+            });
         }
 
         private bool CompanyExists(Guid id)

@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using NetHire.Models;
 using System.Security.Claims;
 using NetHire.DTO.Response;
+using NetHire.DTO.Request;
 using NetHire.Services;
 
 namespace NetHire.Controllers
@@ -59,7 +60,7 @@ namespace NetHire.Controllers
 
         // POST: api/ContactInfo/AddContactInfo
         [HttpPost("AddContactInfo")]
-        public async Task<ActionResult<ApiResponse>> AddContactInfo(ApplicantContactInformation contactInfo)
+        public async Task<ActionResult<ApiResponse>> AddContactInfo(AddContactInfoRequestDTO contactInfo)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (userId == null)
@@ -80,20 +81,29 @@ namespace NetHire.Controllers
                     Message = "Contact information already exists for this user"
                 });
             }
+            var applicantContactInformation = new ApplicantContactInformation();
+            applicantContactInformation.Phone = contactInfo.Phone;
+            applicantContactInformation.AltPhone = contactInfo.AltPhone;
+            applicantContactInformation.Email = contactInfo.Email;
+            applicantContactInformation.AltEmail = contactInfo.AltEmail;
+            applicantContactInformation.StreetAddress = contactInfo.StreetAddress;
+            applicantContactInformation.Address2 = contactInfo.Address2;
+            applicantContactInformation.City = contactInfo.City;
+            applicantContactInformation.State = contactInfo.State;
+            applicantContactInformation.ZipCode = contactInfo.ZipCode;
+            applicantContactInformation.UserId = userId;
+            applicantContactInformation.ContactInfoId = Guid.NewGuid();
 
-            contactInfo.UserId = userId;
-            contactInfo.ContactInfoId = Guid.NewGuid();
-
-            _context.ApplicantContactInformation.Add(contactInfo);
+            _context.ApplicantContactInformation.Add(applicantContactInformation);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction(nameof(GetContactInfoByUserId), 
-                new { id = contactInfo.ContactInfoId }, 
+                new { id = applicantContactInformation.ContactInfoId }, 
                 new ApiResponse 
                 { 
                     ResponseSuccess = true,
                     Status = 201,
-                    Data = contactInfo,
+                    Data = applicantContactInformation,
                     Message = "Contact information created successfully"
                 });
         }
@@ -140,7 +150,12 @@ namespace NetHire.Controllers
                 throw;
             }
 
-            return NoContent();
+            return StatusCode(200, new ApiResponse 
+            { 
+                ResponseSuccess = true,
+                Status = 200,
+                Message = "Contact information updated successfully"
+            });
         }
 
         // DELETE: api/ContactInfo/DeleteContactInfo
